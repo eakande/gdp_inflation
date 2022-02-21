@@ -126,8 +126,8 @@ class ExplainerTabsLayout(ExplainerComponent):
                                         children=tab.layout()) for tab in self.tabs]),
             make_hideable(
                 html.Div([
-                    html.Small("powered by: "),
-                    html.Small(html.A("CAPE Economic Research and Consulting", 
+                    html.Small("Compiled by: "),
+                    html.Small(html.A("CAPE Economic Research and Consulting Ltd", 
                             className="text-muted", target='_blank',
                             href=""))
                 ], style={'display':'flex', 'justify-content':'flex-end', 'text-align':'right'}),
@@ -275,10 +275,10 @@ class ExplainerPageLayout(ExplainerComponent):
                 make_hideable(
                     dbc.Col([
                         html.Div([
-                            html.Small("powered by: "),
-                            html.Small(html.A("explainerdashboard", 
+                            html.Small("Compiled by: "),
+                            html.Small(html.A("CAPE Economic Reasearch and Consulting Ltd", 
                                     className="text-muted", target='_blank',
-                                    href="https://github.com/oegedijk/explainerdashboard"))
+                                    href=" "))
                         ]),
                     ], md="3"), hide=self.hide_poweredby),
             ], justify="end")
