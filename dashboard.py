@@ -36,34 +36,12 @@ X= data.drop(['food_inf','core','inflation'], axis = 1)
 
 
 
-#X = DataFrame(X_data, columns = ['food', 'X0121', 'X0122', 'X0211', 'X0212', 'X0220', 'X0230', 'X0311',
-#       'X0312', 'X0314', 'X0321', 'X0322', 'X0411', 'X0441', 'X0442', 'X0451',
-#       'X0452', 'X0453', 'X0454', 'X0511', 'X0512', 'X0513', 'X0520', 'X0531',
-#      'X0533', 'X0540', 'X0561', 'X0562', 'X0611', 'X0621', 'X0622', 'X0623',
-#      'X0630', 'X0711', 'X0712', 'X0713', 'X0721', 'X0722', 'X0723', 'X0724',
-#       'X0732', 'X0733', 'X0734', 'X0810', 'X0820', 'X0831', 'X0911', 'X0912',
-#      'X0922', 'X0941', 'X0943', 'X1011', 'X1111', 'X1112', 'X1211', 'X1213',
- #     'X1231', 'X1251', 'X1271', 'X1700', 'COP', 'PMS',  'BDC',
-#       'MPR', 'CCPS'] )
-
-
-
-
-
-
 
 y = data['inflation']
 
 
 
 
-#data= load_diabetes()
-#print(data)
-
-########## Importing Dataset ######
-
-#create a DataFrame from the dataset
-#X=pd.DataFrame(data.data,columns=data.feature_names)
 X.head()
 
 #y=pd.DataFrame(data.target,columns=["target"])
@@ -243,7 +221,7 @@ from dash_bootstrap_components.themes import CYBORG,PULSE,DARKLY
 db=ExplainerDashboard(explainer, [CustomModelTab, CustomModelTab1, CustomPredictionsTab,
                                CustomPredictionsTab2, CustomPredictionsTab3, CustomPredictionsTab4], 
                         title='Macroeconomic Indicator Prediction for Nigeria', header_hide_selector=False,
-                        bootstrap=CYBORG)
+                        bootstrap=CYBORG) 
 
 db.to_yaml("dashboard.yaml", explainerfile="explainer.joblib", dump_explainer=True)
 
