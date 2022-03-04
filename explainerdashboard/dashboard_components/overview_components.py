@@ -111,7 +111,7 @@ class ImportancesComponent(ExplainerComponent):
         importance_type=('importances-permutation-or-shap-', 'value'),
         pos_label=('pos-label-', 'value')
     )
-    def __init__(self, explainer, title="Feature Importances", name=None,
+    def __init__(self, explainer, title="Macroeconomic Drivers", name=None,
                         subtitle="Which features had the biggest impact?",
                         hide_type=False, hide_depth=False, hide_popout=False,
                         hide_title=False,  hide_subtitle=False, hide_selector=False,

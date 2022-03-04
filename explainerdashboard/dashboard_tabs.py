@@ -14,7 +14,7 @@ from .dashboard_components import *
 
 
 class ImportancesTab(ExplainerComponent):
-    def __init__(self, explainer, title="Feature Importances", name=None,
+    def __init__(self, explainer, title="Macroeconomic Driver", name=None,
                     hide_type=False, hide_depth=False, hide_cats=False,
                     hide_title=False, hide_selector=False,
                     pos_label=None, importance_type="shap", depth=None, 

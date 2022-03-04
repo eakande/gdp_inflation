@@ -82,7 +82,7 @@ explainer = RegressionExplainer(model, X_test, y_test)
 
 class CustomModelTab(ExplainerComponent):
     def __init__(self, explainer, name=None):
-        super().__init__(explainer, title="Importance")
+        super().__init__(explainer, title="Selected Drivers")
         self.importance =  ImportancesComposite(explainer,
                                 title='Impact',
                                 hide_importances=False)
@@ -105,7 +105,7 @@ class CustomModelTab(ExplainerComponent):
 
 class CustomModelTab1(ExplainerComponent):
     def __init__(self, explainer, name=None):
-        super().__init__(explainer, title="Statistics")
+        super().__init__(explainer, title="Model Performance")
         self.Reg_summary = RegressionModelStatsComposite(explainer,
                                 title='Impact',
                                 hide_predsvsactual=False, hide_residuals=False,
@@ -126,7 +126,7 @@ class CustomModelTab1(ExplainerComponent):
 
 class CustomPredictionsTab(ExplainerComponent):
     def __init__(self, explainer, name=None):
-        super().__init__(explainer, title="Predictions")
+        super().__init__(explainer, title="Model Predictions")
 
         self.prediction = IndividualPredictionsComposite(explainer,
                                                     hide_predindexselector=False, hide_predictionsummary=False,
@@ -149,7 +149,7 @@ class CustomPredictionsTab(ExplainerComponent):
 
 class CustomPredictionsTab2(ExplainerComponent):
     def __init__(self, explainer, name=None):
-        super().__init__(explainer, title="what if")
+        super().__init__(explainer, title="What if Scenarios")
 
         self.what_if = WhatIfComposite(explainer,
                                                     hide_whatifindexselector=False, hide_inputeditor=False,
@@ -193,35 +193,33 @@ class CustomPredictionsTab3(ExplainerComponent):
     
     
 class CustomPredictionsTab4(ExplainerComponent):
-    def __init__(self, explainer, name=None):
-        super().__init__(explainer, title="Decision Trees")
+    def __init__(self, explainer):
+        super().__init__(explainer, title="Interacting Features")
 
-        self.decision_trees = DecisionTreesComposite(explainer,
-                                                    hide_treeindexselector=False, hide_treesgraph=False,
-                                                    hide_treepathtable=False, hide_treepathgraph=False)
+        self.interaction = ShapInteractionsComposite(explainer, 
+                                                      hide_interactionsummary=False, 
+                                                      hide_interactiondependence=False)
         self.register_components()
 
     def layout(self):
         return dbc.Container([
             dbc.Row([
                 dbc.Col([
-                    html.H3("Decision Trees:"),
-                    self.decision_trees.layout()
+                    html.H3("Interacting Features:"),
+                    self.interaction.layout()
                 ])
-                
+
             ])
-        ])    
-    
+        ])
 
 from dash_bootstrap_components.themes import CYBORG,PULSE,DARKLY
 #from dash_bootstrap_components.themes import LUMEN
 
-
-
 db=ExplainerDashboard(explainer, [CustomModelTab, CustomModelTab1, CustomPredictionsTab,
                                CustomPredictionsTab2, CustomPredictionsTab3, CustomPredictionsTab4], 
                         title='Macroeconomic Indicator Prediction for Nigeria', header_hide_selector=False,
-                        bootstrap=CYBORG)
+                        bootstrap=CYBORG).run()
+
 
 db.to_yaml("dashboard.yaml", explainerfile="explainer.joblib", dump_explainer=True)
 

@@ -26,7 +26,7 @@ from .. import to_html
 
 
 class ImportancesComposite(ExplainerComponent):
-    def __init__(self, explainer, title="Feature Importances", name=None,
+    def __init__(self, explainer, title="Macroeconomic Drivers", name=None,
                     hide_title=False, hide_importances=False, hide_descriptions=False,
                     hide_selector=True, **kwargs):
         """Overview tab of feature importances
@@ -752,7 +752,7 @@ class SimplifiedClassifierComposite(ExplainerComponent):
             
         # SHAP summary & dependence
         self.shap_summary = ShapSummaryComponent(
-            explainer, **update_params(kwargs, title="Shap Feature Importances", 
+            explainer, **update_params(kwargs, title="Shap Macroeconomic Drivers", 
                                        hide_index=True, hide_selector=True, depth=None, hide_depth=True))
         self.shap_dependence = ShapDependenceComponent( 
             explainer, **update_params(kwargs, hide_selector=True, hide_index=True, color_col="no_color_col"))
@@ -890,7 +890,7 @@ class SimplifiedRegressionComposite(ExplainerComponent):
             
         # SHAP summary & dependence
         self.shap_summary = ShapSummaryComponent(
-            explainer, **update_params(kwargs, title="Shap Feature Importances", 
+            explainer, **update_params(kwargs, title="Shap Macroeconomic Drivers", 
                                        hide_index=True, depth=None, hide_depth=True))
         self.shap_dependence = ShapDependenceComponent( 
             explainer, **update_params(kwargs, hide_index=True))

@@ -129,7 +129,7 @@ class ExplainerTabsLayout(ExplainerComponent):
                     html.Small("Compiled by: "),
                     html.Small(html.A("CAPE Economic Research and Consulting Ltd", 
                             className="text-muted", target='_blank',
-                            href=""))
+                            href="https://capeeconomicconsulting.com/"))
                 ], style={'display':'flex', 'justify-content':'flex-end', 'text-align':'right'}),
                 hide=self.hide_poweredby),
         ], fluid=self.fluid)
@@ -278,7 +278,7 @@ class ExplainerPageLayout(ExplainerComponent):
                             html.Small("Compiled by: "),
                             html.Small(html.A("CAPE Economic Reasearch and Consulting Ltd", 
                                     className="text-muted", target='_blank',
-                                    href=" "))
+                                    href=" https://capeeconomicconsulting.com/"))
                         ]),
                     ], md="3"), hide=self.hide_poweredby),
             ], justify="end")
@@ -1046,7 +1046,7 @@ class ExplainerHub:
     """
     __reserved_names = {'login', 'logout', 'admin', 'index', 'hub'}
 
-    def __init__(self, dashboards:List[ExplainerDashboard], title:str="ExplainerHub", 
+    def __init__(self, dashboards:List[ExplainerDashboard], title:str="The Dashboard Hub", 
                     description:str=None, masonry:bool=False, n_dashboard_cols:int=3, 
                     users_file:str="users.yaml", user_json=None, 
                     logins:List[List]=None, db_users:dict=None,
@@ -1136,9 +1136,9 @@ class ExplainerHub:
             print("Warning: user_json has been deprecated, use users_file parameter instead!")
             self.users_file = user_json
         if self.description is None:
-            self.description = ("This ExplainerHub shows a number of ExplainerDashboards.\n"
-            "Each dashboard makes the inner workings and predictions of a trained machine "
-            "learning model transparent and explainable.")
+            self.description = ("This explainer dashboard hub shows different macroeconomic dashboards.\n"
+            "Each dashboard contains predictions of a trained machine "
+            "learning model explainable.")
             self._stored_params['description'] = self.description
             
         if (logins is not None and len(logins)==2 
