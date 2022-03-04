@@ -220,7 +220,6 @@ db=ExplainerDashboard(explainer, [CustomModelTab, CustomModelTab1, CustomPredict
                         title='Macroeconomic Indicator Prediction for Nigeria', header_hide_selector=False,
                         bootstrap=CYBORG)
 
-
 db.to_yaml("dashboard.yaml", explainerfile="explainer.joblib", dump_explainer=True)
 
 from explainerdashboard import ExplainerDashboard
