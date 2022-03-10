@@ -22,22 +22,31 @@ from dash import Dash, callback, html, dcc, dash_table, Input, Output, State, MA
     
 #Import the Diabetes Dataset
 
-data=pd.read_csv('data_latest.csv')
+
+
+#data=pd.read_csv('data_latest.csv')
+
+
+data = pd.read_excel('Elijah_inflation.xlsx', sheet_name="High Inflation Regime").dropna()
+
+X = data.drop(['Headline', 'Date', 'Core'], axis=1)
+y = data['Headline']
+
 
 #values.astype('float32')
 
 #data=data.dropna()
 #data = data[data['OBB']!='']
 
-# Drop data
-X= data.drop(['food_inf','core','inflation'], axis = 1)
+# Drop data in variable
+#X= data.drop(['food_inf','core','inflation'], axis = 1)
 
 
 
 
 
 
-y = data['inflation']
+#y = data['inflation']
 
 
 
@@ -65,6 +74,9 @@ model = RandomForestRegressor(n_estimators = 400,
 
 
 model.fit(X_train, y_train.values.ravel())
+
+
+model.score (X_train,y_train), model.score(X_test,y_test),model.oob_score_
 
 
 #X_train, y_train, X_test, y_test = titanic_survive()

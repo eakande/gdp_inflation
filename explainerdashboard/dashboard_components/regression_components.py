@@ -400,7 +400,7 @@ class RegressionRandomIndexComponent(ExplainerComponent):
 
 
 class RegressionModelSummaryComponent(ExplainerComponent):
-    def __init__(self, explainer, title="Model Summary", name=None, 
+    def __init__(self, explainer, title="Out-of Sample-Model Summary", name=None, 
                     subtitle="Quantitative metrics for model performance",
                     hide_title=False, hide_subtitle=False, 
                     round=3, show_metrics=None, description=None, **kwargs):
@@ -410,7 +410,7 @@ class RegressionModelSummaryComponent(ExplainerComponent):
             explainer (Explainer): explainer object constructed with either
                         ClassifierExplainer() or RegressionExplainer()
             title (str, optional): Title of tab or page. Defaults to 
-                        "Model Summary".
+                        "Out-of Sample-Model Summary".
             name (str, optional): unique name to add to Component elements. 
                         If None then random uuid is generated to make sure 
                         it's unique. Defaults to None.

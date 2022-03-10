@@ -3380,7 +3380,7 @@ class RegressionExplainer(BaseExplainer):
         return preds_df
 
     def metrics(self, show_metrics:List[str]=None):
-        """dict of performance metrics: root_mean_squared_error, mean_absolute_error and R-squared
+        """dict of performance metrics: root_mean_squared_error, mean_absolute_error and Accuracy
         
         Args:
             show_metrics (List): list of metrics to display in order. Defaults
@@ -3395,7 +3395,7 @@ class RegressionExplainer(BaseExplainer):
                 'root-mean-squared-error' : np.sqrt(mean_squared_error(self.y, self.preds)),
                 'mean-absolute-error' : mean_absolute_error(self.y, self.preds),
                 'mean-absolute-percentage-error': mape_score(self.y, self.preds),
-                'R-squared' : r2_score(self.y, self.preds),
+                'Accuracy' : r2_score(self.y, self.preds),
             }
         else:
             metrics_dict = {
@@ -3403,7 +3403,7 @@ class RegressionExplainer(BaseExplainer):
                 'root-mean-squared-error' : [],
                 'mean-absolute-error' : [],
                 'mean-absolute-percentage-error': [],
-                'R-squared' : [],
+                'Accuracy' : [],
             }
             for train_index, test_index in KFold(n_splits=self.cv, shuffle=True).split(self.X):
                 X_train, X_test = self.X.iloc[train_index], self.X.iloc[test_index]
@@ -3413,7 +3413,7 @@ class RegressionExplainer(BaseExplainer):
                 metrics_dict['root-mean-squared-error'].append(np.sqrt(mean_squared_error(y_test, preds)))
                 metrics_dict['mean-absolute-error'].append(mean_absolute_error(y_test, preds))
                 metrics_dict['mean-absolute-percentage-error'].append(mape_score(y_test, preds))
-                metrics_dict['R-squared'].append(r2_score(y_test, preds))
+                metrics_dict['Accuracy'].append(r2_score(y_test, preds))
             metrics_dict = {k:np.mean(v) for k,v in metrics_dict.items()}
 
         if metrics_dict['mean-absolute-percentage-error'] > 2:
@@ -3460,7 +3460,7 @@ class RegressionExplainer(BaseExplainer):
                 metrics_descriptions_dict[k] = (f"On average predictions deviate "
                     f"{100*v:.{round}f}% off the observed value of "
                     f"{self.target} (can be both above or below)")
-            if k == 'R-squared':
+            if k == 'Accuracy':
                 metrics_descriptions_dict[k] = (f"{100*v:.{round}f}% of all "
                     f"variation in {self.target} was explained by the model.")
         return metrics_descriptions_dict
