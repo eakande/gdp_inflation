@@ -8,6 +8,7 @@ dtreeviz>=1.1.4
 numpy
 pandas>=1.4.0
 scikit-learn
+openpyxl
 shap>=0.37
 joblib
 oyaml
