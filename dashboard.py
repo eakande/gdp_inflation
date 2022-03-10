@@ -29,8 +29,8 @@ from dash import Dash, callback, html, dcc, dash_table, Input, Output, State, MA
 
 data = pd.read_excel('Elijah_inflation.xlsx', sheet_name="High Inflation Regime").dropna()
 
-X = data.drop(['Headline', 'Date', 'Core'], axis=1)
-y = data['Headline']
+X = data.drop(['Headline Inflation', 'Date', 'Core'], axis=1)
+y = data['Headline Inflation']
 
 
 #values.astype('float32')
