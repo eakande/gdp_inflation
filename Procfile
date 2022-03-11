@@ -1,1 +1,9 @@
-web: gunicorn dashboard:app
+web: waitress-serve dashboard:app
+
+
+
+
+
+
+
+
